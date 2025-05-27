@@ -13,9 +13,16 @@ import CounterAnimation from "@/components/counter-animation"
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Hero Section */}
+      {/* Hero Section with Background */}
       <section className="relative overflow-hidden py-20">
-        <div className="container mx-auto px-4">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/023/570/747/large_2x/renewable-energy-background-with-green-energy-as-wind-turbines-and-solar-panels-green-energy-concept-energy-sources-sustainable-ecology-elements-generative-ai-photo.jpg"
+            alt="Green energy background"
+            className="h-full w-full object-cover opacity-10"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="grid items-center gap-8 md:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -23,6 +30,13 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="space-y-6"
             >
+              <div className="mb-8">
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/016/774/440/original/battery-charging-icon-on-transparent-background-free-png.png"
+                  alt="Battery icon"
+                  className="h-16 w-16 mb-4"
+                />
+              </div>
               <h1 className="glow-text text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
                 Battery Recycling <span className="text-green-400">Awareness Platform</span>
               </h1>
@@ -58,9 +72,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      {/* Stats Section with Pattern */}
+      <section className="py-16 relative">
+        <div className="absolute inset-0 opacity-10">
+          {/* <img
+            src="https://th.bing.com/th/id/OIP.S6voRWxpHKeVYwbQ9VYy8AHaHa?cb=iwp2&rs=1&pid=ImgDetMain"
+            alt="Pattern background"
+            className="h-full w-full object-cover"
+          /> */}
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="mx-auto max-w-4xl rounded-xl bg-black/50 p-8 backdrop-blur-sm">
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
               <CounterAnimation end={1250000} label="Batteries Recycled" delay={100} />
@@ -72,7 +93,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section with Image Cards */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
@@ -91,28 +112,28 @@ export default function Home() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <FeatureCard
-              icon={<Battery className="h-10 w-10 text-green-400" />}
+              image="https://thumbs.dreamstime.com/z/colorful-cartoon-battery-set-colorful-cartoon-battery-set-different-type-rechargeable-electric-accumulators-electricity-themed-142122991.jpg"
               title="Battery Types"
               description="Learn about different battery types, their components, and recycling timelines."
               link="/battery-types"
               delay={0.1}
             />
             <FeatureCard
-              icon={<BookOpen className="h-10 w-10 text-green-400" />}
+              image="https://static.vecteezy.com/system/resources/previews/046/970/072/non_2x/illustration-of-battery-recycling-vector.jpg"
               title="Recycling Guide"
               description="Step-by-step instructions for properly disposing of batteries."
               link="/guide"
               delay={0.2}
             />
             <FeatureCard
-              icon={<MapPin className="h-10 w-10 text-green-400" />}
+              image="https://cdnl.iconscout.com/lottie/premium/preview/find-location-10055135-8171952.png?f=webp"
               title="Find Centers"
               description="Locate battery recycling centers near you."
               link="/centers"
               delay={0.3}
             />
             <FeatureCard
-              icon={<Award className="h-10 w-10 text-green-400" />}
+              image="https://ugokawaii.com/wp-content/uploads/2022/12/quiz-time-768x768.gif"
               title="Take the Quiz"
               description="Test your knowledge and earn badges."
               link="/quiz"
@@ -122,7 +143,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section with Image */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-green-900/50 to-black p-8 md:p-12">
@@ -142,9 +163,9 @@ export default function Home() {
               </div>
               <div className="flex justify-center">
                 <img
-                  src="/placeholder.svg?height=300&width=300"
-                  alt="Battery recycling illustration"
-                  className="max-h-[300px] rounded-xl object-cover"
+                  src="https://c8.alamy.com/comp/2R4MHJ2/recycling-batteries-people-throw-away-used-electric-alkaline-accumulators-in-special-garbage-container-waste-utilization-trash-sorting-disposal-2R4MHJ2.jpg"
+                  alt="People recycling batteries"
+                  className="max-h-[300px] rounded-xl object-cover shadow-xl"
                 />
               </div>
             </div>
@@ -158,14 +179,14 @@ export default function Home() {
 }
 
 interface FeatureCardProps {
-  icon: React.ReactNode
+  image: string
   title: string
   description: string
   link: string
   delay: number
 }
 
-function FeatureCard({ icon, title, description, link, delay }: FeatureCardProps) {
+function FeatureCard({ image, title, description, link, delay }: FeatureCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -173,11 +194,15 @@ function FeatureCard({ icon, title, description, link, delay }: FeatureCardProps
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
     >
-      <Card className="battery-card h-full overflow-hidden">
-        <CardContent className="flex h-full flex-col p-6">
-          <div className="mb-4">{icon}</div>
+      <Card className="battery-card h-full overflow-hidden relative group">
+        <img
+          src={image}
+          alt={title}
+          className="h-48 w-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+        />
+        <CardContent className="flex h-full flex-col p-6 relative z-10 bg-black/60">
           <h3 className="mb-2 text-xl font-bold text-white">{title}</h3>
-          <p className="mb-4 flex-grow text-gray-400">{description}</p>
+          <p className="mb-4 flex-grow text-gray-300">{description}</p>
           <Button
             asChild
             variant="ghost"

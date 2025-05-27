@@ -14,7 +14,7 @@ const navItems = [
   { name: "Find Centers", href: "/centers", icon: Map },
   { name: "Quiz", href: "/quiz", icon: Award },
   { name: "Make a Pledge", href: "/pledge", icon: FileText },
-  { name: "Leaderboard", href: "/leaderboard", icon: Trophy },
+  { name: "Problems & Solution", href: "/upcoming", icon: Trophy },
   { name: "Dashboard", href: "/dashboard", icon: User },
 ]
 
